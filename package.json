@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "multer": "^2.1.1"
+  },
+  "scripts":{
+    "dev": "npx nodemon"
+  },
+  "name": "try-hactiv8",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "ISC",
+  "type": "module"
+}
