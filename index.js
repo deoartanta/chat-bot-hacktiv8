@@ -2,7 +2,7 @@ import { GoogleGenAI } from "@google/genai";
 import "dotenv/config";
 import express from "express";
 import multer from "multer";
-// import fs from "fs/promises";
+import cors from "cors";
 
 
 const ai = new GoogleGenAI({});
@@ -11,8 +11,9 @@ const upload = multer();
 
 const GEMINI_MODEL = "gemini-3.5-flash";
 
+app.use(cors());
 app.use(express.json());
-
+app.use(express.static("public"));
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
@@ -55,4 +56,50 @@ const handleGenerateFromFile = async (req, res) => {
         res.status(500).json({ message: e.message });
     }
 };
-app.post("/generate-from-file", upload.any(), handleGenerateFromFile);
+
+const handleApiConversation = async (req, res) => {};
+
+const handleApiChat = async (req, res) => {
+    const { conversations } = req.body;
+    try {
+        if (!Array.isArray(conversations)) throw new Error("message must be an array of conversation objects");
+        let isValid = true
+
+        conversations.forEach(({role,text}) => {
+            if (!isValid) return;
+            if (!["model", "user"].includes(role)) {
+                isValid = false;
+                res.status(400).json({ message: "Invalid role in conversations. Allowed roles are 'user' and 'model'." });
+            }
+
+            if (!text || typeof text !== "string"){
+                isValid = false;
+            }
+        });
+        const contents = conversations.map(({role,text}) => ({
+            role,parts:[{text}]
+        }));
+
+        if (isValid){
+            const response = await ai.models.generateContent({
+                model: GEMINI_MODEL,
+                contents,
+                config: {
+                    temperature: 0.9,
+                    systeminstructions: "You are a helpful assistant that provides detailed and informative responses to user queries. Always aim to be as helpful and accurate as possible in your answers."
+                }
+            });
+            res.status(200).json({ generatedText: response.text });
+        }
+    } catch (e) {
+        console.error("Error generating chat response:", e);
+        res.status(500).json({ message: e.message });
+    }
+        
+};
+app.post("/api/chat", handleApiChat);
+app.post("/generate-from-file", upload.any(), 
+handleGenerateFromFile);
+// app.get("/", (req, res) => {
+//     res.send("Hello World!");
+// });
