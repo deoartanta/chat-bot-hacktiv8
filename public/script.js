@@ -36,8 +36,7 @@ form.addEventListener('submit', async function (e) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ 
-        conversation: conversationHistory,
+      body: JSON.stringify({
         conversations: conversationHistory 
       })
     });

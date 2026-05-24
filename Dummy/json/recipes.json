@@ -1,0 +1,173 @@
+[
+    {
+        "id": 1,
+        "title": "Nasi Goreng Spesial",
+        "category": "Nasi & Mie",
+        "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=600&auto=format&fit=crop",
+        "duration": "20 Menit",
+        "difficulty": "Mudah",
+        "portion": "2 Porsi",
+        "description": "Nasi goreng spesial khas nusantara yang gurih dengan campuran telur, bakso sapi, suwiran ayam, serta cita rasa khas kecap manis Indonesia yang harum.",
+        "ingredients": [
+            "2 piring nasi putih dingin (paling bagus nasi pera)",
+            "2 butir telur ayam (1 dikocok lepas, 1 untuk ceplok)",
+            "3 buah bakso sapi, iris tipis",
+            "50 gram daging dada ayam rebus, suwir-suwir",
+            "3 sendok makan kecap manis berkualitas",
+            "1 sendok makan saus tiram",
+            "1 batang daun bawang, iris tipis",
+            "Minyak secukupnya untuk menumis",
+            "Bumbu Halus: 3 siung bawang merah, 2 siung bawang putih, 1 butir kemiri, 2 buah cabai merah keriting, garam & merica secukupnya"
+        ],
+        "steps": [
+            "Panaskan sedikit minyak, masukkan telur kocok lalu buat orak-arik hingga matang. Angkat dan sisihkan.",
+            "Tumis bumbu halus di sisa minyak hingga matang and mengeluarkan aroma harum.",
+            "Masukkan irisan bakso dan ayam suwir, aduk rata selama 1-2 menit.",
+            "Masukkan nasi putih dingin, aduk rata dengan bumbu hingga merata.",
+            "Tambahkan kecap manis, saus tiram, telur orak-arik, garam, dan merica bubuk. Aduk cepat di atas api besar agar bumbu meresap dan ada aroma smoky.",
+            "Terakhir masukkan irisan daun bawang, aduk sebentar, lalu angkat.",
+            "Sajikan hangat dengan telur ceplok, kerupuk, dan potongan timun/tomat segar."
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Rendang Daging Sapi",
+        "category": "Daging",
+        "image": "https://pict.sindonews.com/dyn/480/pena/news/2020/07/30/185/118358/resep-bikin-rendang-sapi-yang-kelezatannya-dikenal-dunia-uph.jpg",
+        "duration": "3 Jam",
+        "difficulty": "Sulit",
+        "portion": "6 Porsi",
+        "description": "Masakan daging sapi bercita rasa pedas nan kaya rempah khas Minangkabau. Melalui proses memasak perlahan hingga kuah santan mengering dan mengkristal menjadi bumbu hitam gurih.",
+        "ingredients": [
+            "1 kg daging sapi padat (paha/gandik), potong searah serat menjadi 20-24 bagian",
+            "1000 ml santan kental dari 2 butir kelapa tua",
+            "1000 ml santan encer",
+            "2 batang serai, memarkan",
+            "4 lembar daun jeruk purut, buang tulang daunnya",
+            "2 lembar daun kunyit, ikat simpul",
+            "2 buah asam kandis",
+            "Bumbu Halus: 150 gram cabai merah keriting, 15 butir bawang merah, 6 siung bawang putih, 3 cm jahe, 3 cm lengkoas, 2 cm kunyit (bakar), 1 sdm ketumbar bubuk, 1/2 sdt pala bubuk, 2 sdt garam"
+        ],
+        "steps": [
+            "Tuang santan encer dan santan kental ke dalam wajan besar. Masukkan bumbu halus, daun kunyit, daun jeruk, serai, dan asam kandis. Aduk hingga rata.",
+            "Masak santan dengan api sedang sambil terus diaduk perlahan agar santan tidak pecah, hingga mengeluarkan minyak kemerahan.",
+            "Masukkan potongan daging sapi. Kecilkan api sedikit, aduk merata dan biarkan bumbu meresap.",
+            "Masak terus sambil sesekali diaduk agar bagian bawah tidak gosong. Kuah perlahan akan menyusut menjadi warna cokelat (Kalio).",
+            "Teruskan memasak dengan api sangat kecil dan aduk lebih sering sampai minyak terserap habis dan bumbu berubah menjadi cokelat tua kehitaman.",
+            "Angkat rendang dan sajikan. Rendang akan terasa lebih lezat jika didiamkan semalaman sebelum dikonsumsi."
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Sate Ayam Madura",
+        "category": "Ayam",
+        "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?q=80&w=600&auto=format&fit=crop",
+        "duration": "45 Menit",
+        "difficulty": "Sedang",
+        "portion": "4 Porsi",
+        "description": "Sate legendaris dengan daging ayam empuk yang dibakar di atas arang, disiram dengan saus kacang kental yang gurih-manis, serta taburan bawang goreng harum.",
+        "ingredients": [
+            "500 gram fillet dada ayam, potong dadu",
+            "Tusuk sate secukupnya (rendam air agar tidak terbakar)",
+            "2 sendok makan kecap manis untuk olesan bakar",
+            "1 sendok makan minyak goreng untuk campuran oles",
+            "Bumbu Kacang: 250 gram kacang tanah (goreng), 4 butir bawang merah, 3 siung bawang putih, 2 butir kemiri, 2 sdm gula merah sisir, 1 sdt garam, 150 ml air hangat, 3 sdm kecap manis"
+        ],
+        "steps": [
+            "Haluskan semua bahan bumbu kacang (kacang tanah, bawang merah, bawang putih, kemiri) dengan blender, lalu masak dengan air hangat, kecap manis, gula merah, dan garam hingga mengental serta mengeluarkan minyak alami. Angkat.",
+            "Ambil 2 sendok makan bumbu kacang tersebut, campurkan dengan potongan daging ayam dalam wadah. Diamkan 15 menit agar bumbu meresap.",
+            "Tusuk potongan daging ayam ke tusuk sate (sekitar 4-5 potong per tusuk).",
+            "Campurkan kecap manis and sedikit minyak dalam piring datar sebagai bumbu oles.",
+            "Gulingkan sate ke bumbu oles, lalu bakar di atas panggangan/arang hingga berwarna kecokelatan dan matang sempurna. Bolak-balik agar matang merata.",
+            "Sajikan sate ayam dengan siraman sisa saus kacang hangat, kecap manis tambahan, irisan bawang merah mentah, cabai rawit potong, dan lontong."
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Gado-Gado Siram",
+        "category": "Sayur",
+        "image": "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=600&auto=format&fit=crop",
+        "duration": "25 Menit",
+        "difficulty": "Mudah",
+        "portion": "3 Porsi",
+        "description": "Salad sehat ala Indonesia yang terdiri dari aneka sayuran segar yang direbus, potongan tahu-tempe goreng, telur rebus, disiram saus kacang gurih beraroma daun jeruk.",
+        "ingredients": [
+            "100 gram tauge, buang akar dan seduh air panas",
+            "150 gram kangkung, potong dan rebus",
+            "100 gram kol, iris kasar dan rebus",
+            "1 buah timun, iris tipis segar",
+            "1 buah tahu putih & 1/2 papan tempe (goreng kering lalu potong)",
+            "2 butir telur ayam rebus, belah menjadi dua",
+            "Bumbu Kacang Siram: 200 gram kacang tanah goreng (haluskan), 3 buah cabai merah keriting (rebus), 2 siung bawang putih (goreng), 1 sdt terasi bakar, 50 gram gula merah sisir, 2 sdm air asam jawa, 1/2 sdt garam, 200 ml santan cair hangat"
+        ],
+        "steps": [
+            "Haluskan bawang putih, cabai merah, terasi, gula merah, dan garam.",
+            "Campurkan bumbu halus tersebut dengan kacang tanah halus. Tuangkan santan hangat perlahan sambil diaduk rata.",
+            "Tambahkan air asam jawa, aduk kembali hingga saus kacang licin dan kental pas.",
+            "Tata sayuran rebus (kangkung, kol, tauge), irisan timun, potongan tahu, tempe, dan telur rebus di atas piring saji.",
+            "Siram dengan saus kacang secara merata.",
+            "Sajikan segera bersama taburan bawang goreng melimpah dan emping atau kerupuk merah."
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Pisang Goreng Crispy",
+        "category": "Dessert",
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop",
+        "duration": "15 Menit",
+        "difficulty": "Sangat Mudah",
+        "portion": "4 Porsi",
+        "description": "Camilan sore terfavorit! Pisang raja atau pisang kepok yang manis, dibalut adonan tepung renyah beraroma vanila, digoreng keemasan bertekstur krispi di luar dan lembut di dalam.",
+        "ingredients": [
+            "8 buah pisang kepok atau pisang raja matang",
+            "150 gram tepung terigu protein sedang",
+            "2 sdm tepung beras (untuk efek krispi ekstra)",
+            "1 sdm tepung tapioka",
+            "1 sdm gula pasir",
+            "1/2 sdt garam",
+            "1/2 sdt vanili bubuk",
+            "170 ml air es (air dingin membuat adonan lebih krispi)",
+            "Minyak melimpah untuk menggoreng"
+        ],
+        "steps": [
+            "Kupas pisang, lalu belah melebar membentuk kipas atau potong membujur menjadi dua bagian sesuai selera.",
+            "Campurkan tepung terigu, tepung beras, tapioka, gula pasir, garam, dan vanili bubuk dalam mangkuk besar.",
+            "Tuang air es sedikit demi sedikit sambil diaduk dengan whisk hingga adonan tercampur rata, bertekstur kental sedang dan tidak bergerindil.",
+            "Panaskan minyak goreng dalam wajan dengan api sedang-besar.",
+            "Celupkan tiap bagian pisang ke dalam adonan tepung hingga terbalut rata.",
+            "Goreng pisang satu per satu dalam minyak panas. Jangan terlalu banyak memasukkan pisang sekaligus agar suhu minyak stabil.",
+            "Goreng hingga berwarna kuning keemasan dan mengembang krispi. Balik sesekali agar matang merata.",
+            "Angkat, tiriskan, lalu sajikan selagi hangat. Bisa ditambahkan keju parut atau cokelat cair sebagai topping tambahan."
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Soto Ayam Lamongan",
+        "category": "Sup & Soto",
+        "image": "https://images.unsplash.com/photo-1608897013039-887f21d8c804?q=80&w=600&auto=format&fit=crop",
+        "duration": "1 Jam",
+        "difficulty": "Sedang",
+        "portion": "5 Porsi",
+        "description": "Soto ayam khas Jawa Timur dengan kuah kuning gurih yang kaya rempah, berpadu dengan gurihnya bubuk koya udang yang khas serta suwiran ayam kampung empuk.",
+        "ingredients": [
+            "1 ekor ayam kampung (potong menjadi 4 bagian)",
+            "2 liter air untuk merebus ayam",
+            "2 batang serai, memarkan",
+            "3 lembar daun jeruk",
+            "2 lembar daun salam",
+            "2 batang daun bawang, potong kasar",
+            "Pelengkap: Soun rebus, kol iris tipis, telur rebus, seledri iris halus, jeruk nipis, sambal rawit",
+            "Bahan Koya: 5 buah kerupuk udang (goreng), 3 siung bawang putih goreng (haluskan bersama hingga menjadi bubuk)",
+            "Bumbu Halus: 8 siung bawang merah, 6 siung bawang putih, 4 butir kemiri (sangrai), 3 cm kunyit (bakar), 2 cm jahe, 1 sdt ketumbar bubuk, 1/2 sdt merica butiran, garam secukupnya"
+        ],
+        "steps": [
+            "Rebus ayam kampung bersama daun salam dan garam dalam air mendidih menggunakan api kecil hingga ayam matang empuk. Angkat ayam, tiriskan (jangan buang air kaldu rebusannya).",
+            "Goreng ayam rebus sebentar dalam minyak panas hingga berkulit cokelat keemasan. Angkat, dinginkan, lalu suwir-suwir daging ayam.",
+            "Panaskan sedikit minyak, tumis bumbu halus bersama serai dan daun jeruk sampai mengeluarkan aroma sangat harum.",
+            "Masukkan tumisan bumbu halus ke panci berisi kuah kaldu ayam tadi. Didihkan kembali kuah soto dengan api sedang.",
+            "Masukkan potongan daun bawang sesaat sebelum mematikan api kompor agar tetap segar dan harum.",
+            "Cara penyajian: Tata soun, kol iris, dan suwiran ayam di mangkuk saji. Siram dengan kuah soto panas-panas.",
+            "Beri taburan seledri, bubuk koya udang khas Lamongan, kucuran air jeruk nipis, sambal, serta telur rebus di atasnya. Sajikan hangat."
+        ]
+    }
+]

@@ -1,23 +1,295 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gemini AI Chatbot</title>
-  <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RasaNusantara - Resep Kuliner Terbaik & Asisten AI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="resep_nusantara_chatbot.css">
 </head>
-<body>
-  <div class="container">
-    <h1>Gemini AI Chatbot</h1>
-    <div id="chat-box" class="chat-box"></div>
-    <form id="chat-form">
-      <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off" required />
-      <button type="submit">Send</button>
-    </form>
-  </div>
-  <!-- Markdown Parser and Sanitizer CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
-  <script src="script.js"></script>
+<body class="bg-amber-50/40 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-amber-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="p-2.5 bg-amber-500 rounded-2xl text-white shadow-md shadow-amber-500/20">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </span>
+                <div>
+                    <h1 class="text-2xl font-bold font-serif tracking-wide bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">RasaNusantara</h1>
+                    <p class="text-xs text-slate-400 font-medium tracking-wider uppercase">Cita Rasa Otentik</p>
+                </div>
+            </div>
+
+            <!-- Search bar desktop -->
+            <div class="hidden md:flex items-center flex-1 max-w-md mx-8">
+                <div class="relative w-full">
+                    <input type="text" id="desktopSearchInput" placeholder="Cari resep favoritmu... (e.g. Nasi Goreng)" 
+                        class="w-full pl-11 pr-4 py-2.5 rounded-2xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-sm transition-all">
+                    <svg class="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Social links / Stats -->
+            <div class="flex items-center gap-2 text-sm font-semibold text-slate-600">
+                <span class="px-3 py-1.5 bg-emerald-50 text-emerald-700 rounded-full flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Chef AI Online
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="relative bg-gradient-to-b from-amber-100/40 via-amber-50/20 to-transparent py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-serif text-slate-900 tracking-tight leading-tight max-w-3xl mx-auto">
+                Eksplorasi <span class="text-amber-600 underline decoration-amber-300 decoration-wavy decoration-2 underline-offset-4">Masakan Lezat</span> Setiap Hari
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-xl mx-auto">
+                Koleksi resep nusantara yang dikurasi khusus untuk Anda. Butuh saran memasak? Cukup tanyakan <span id="heroChefName">Chef Deo</span> di pojok kanan bawah!
+            </p>
+
+            <!-- Search bar mobile -->
+            <div class="mt-8 max-w-md mx-auto block md:hidden">
+                <div class="relative">
+                    <input type="text" id="mobileSearchInput" placeholder="Cari resep favoritmu..." 
+                        class="w-full pl-11 pr-4 py-3 rounded-2xl bg-white border border-slate-200 shadow-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm transition-all">
+                    <svg class="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipe Catalog Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 flex-1">
+        <!-- Categories filter tabs -->
+        <div class="flex flex-nowrap overflow-x-auto gap-2 pb-4 mb-8 -mx-4 px-4 scrollbar-none" id="categoriesContainer">
+            <!-- Dynamically populated categories -->
+        </div>
+
+        <!-- Recipe Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8" id="recipeGrid">
+            <!-- Dynamically populated recipe cards -->
+        </div>
+
+        <!-- No recipes fallback state -->
+        <div id="noRecipesState" class="hidden text-center py-16">
+            <div class="text-amber-400 text-6xl mb-4">🍽️</div>
+            <h3 class="text-lg font-bold text-slate-800">Resep Tidak Ditemukan</h3>
+            <p class="text-slate-500 max-w-sm mx-auto mt-2 text-sm">Coba cari kata kunci lain atau gunakan kategori filter di atas.</p>
+        </div>
+    </main>
+
+    <!-- Recipe Detail Modal -->
+    <div id="recipeModal" class="fixed inset-0 z-50 overflow-y-auto hidden" role="dialog" aria-modal="true">
+        <!-- Overlay backdrop -->
+        <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeRecipeModal()"></div>
+
+        <!-- Modal content card wrapper -->
+        <div class="flex min-h-screen items-center justify-center p-4 text-center sm:p-6">
+            <div class="relative transform overflow-hidden rounded-3xl bg-white text-left shadow-2xl transition-all sm:my-8 w-full max-w-2xl">
+                <!-- Close Button -->
+                <button onclick="closeRecipeModal()" class="absolute right-4 top-4 z-10 p-2 rounded-full bg-slate-900/70 text-white hover:bg-slate-900 transition-all focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+
+                <!-- Modal Banner Image -->
+                <div class="h-48 sm:h-72 w-full relative">
+                    <img id="modalImage" src="" alt="" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white">
+                        <span id="modalCategory" class="px-2.5 py-1 text-xs font-bold uppercase tracking-wider bg-amber-500 rounded-lg text-white mb-2 inline-block"></span>
+                        <h3 id="modalTitle" class="text-2xl sm:text-3xl font-extrabold font-serif"></h3>
+                    </div>
+                </div>
+
+                <!-- Modal Body Content -->
+                <div class="p-6 sm:p-8 space-y-6 max-h-[50vh] overflow-y-auto">
+                    <!-- Quick Info Stats -->
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4 p-3 sm:p-4 bg-amber-50/50 rounded-2xl border border-amber-100 text-center text-xs sm:text-sm font-medium">
+                        <div>
+                            <span class="block text-xs text-slate-400 mb-0.5 uppercase tracking-wide">Porsi</span>
+                            <span id="modalPortion" class="text-slate-800 font-bold"></span>
+                        </div>
+                        <div class="border-x border-slate-200">
+                            <span class="block text-xs text-slate-400 mb-0.5 uppercase tracking-wide">Waktu Masak</span>
+                            <span id="modalDuration" class="text-slate-800 font-bold"></span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-slate-400 mb-0.5 uppercase tracking-wide">Tingkat Kesulitan</span>
+                            <span id="modalDifficulty" class="text-slate-800 font-bold"></span>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div>
+                        <h4 class="text-sm font-bold uppercase text-slate-400 tracking-wider mb-2">Deskripsi</h4>
+                        <p id="modalDescription" class="text-slate-600 leading-relaxed text-sm sm:text-base"></p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Ingredients -->
+                        <div>
+                            <h4 class="text-sm font-bold uppercase text-slate-400 tracking-wider mb-3 flex items-center gap-1.5">
+                                🍳 Bahan-Bahan
+                            </h4>
+                            <ul id="modalIngredients" class="space-y-2 text-sm text-slate-700">
+                                <!-- Dynamically populated list -->
+                            </ul>
+                        </div>
+
+                        <!-- Instructions -->
+                        <div>
+                            <h4 class="text-sm font-bold uppercase text-slate-400 tracking-wider mb-3 flex items-center gap-1.5">
+                                📝 Langkah Memasak
+                            </h4>
+                            <ol id="modalSteps" class="space-y-3.5 text-sm text-slate-700 list-decimal pl-4">
+                                <!-- Dynamically populated steps -->
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer action -->
+                <div class="p-4 sm:p-6 border-t border-slate-100 flex flex-col-reverse sm:flex-row gap-4 sm:gap-0 items-center justify-between bg-slate-50/50">
+                    <button onclick="askChatbotAboutCurrentRecipe()" class="w-full sm:w-auto flex items-center justify-center gap-2 text-amber-600 hover:text-amber-700 font-semibold text-sm transition-all py-2.5">
+                        <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                        Tanya Chef AI tentang resep ini
+                    </button>
+                    <button onclick="closeRecipeModal()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 text-white font-medium text-sm hover:bg-slate-900 transition-all">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHATBOT CORE FLOATING COMPONENT -->
+    <!-- Chat Trigger Bubble Icon -->
+    <button id="chatTriggerBtn" onclick="toggleChatWindow()" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-tr from-amber-500 to-orange-500 text-white shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center group">
+        <span class="absolute top-0 right-0 flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+        </span>
+        <!-- Normal Icon -->
+        <svg id="chatIconNormal" class="w-8 h-8 transition-all group-hover:rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+        </svg>
+        <!-- Close icon when open -->
+        <svg id="chatIconClose" class="w-8 h-8 hidden transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+
+    <!-- Chat Box Window Panel -->
+    <div id="chatWindow" class="fixed bottom-24 right-4 left-4 sm:left-auto sm:right-6 z-50 w-auto sm:w-96 h-[500px] bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col transform translate-y-8 opacity-0 scale-95 pointer-events-none transition-all duration-300">
+        <!-- Chat Header -->
+        <div class="p-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold text-xl">
+                        👨‍🍳
+                    </div>
+                    <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white"></span>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm tracking-wide" id="chatHeaderTitle">Chef Deo AI</h4>
+                    <p class="text-xs text-amber-100 flex items-center gap-1">
+                        Asisten Kuliner Virtual
+                    </p>
+                </div>
+            </div>
+            <button onclick="toggleChatWindow()" class="p-1 rounded-lg hover:bg-white/10 transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Chat Suggestions / Prompts -->
+        <div class="p-2 bg-amber-50 border-b border-amber-100 overflow-x-auto flex gap-2 whitespace-nowrap scrollbar-none" id="chatSuggestions">
+            <button onclick="sendQuickPrompt('Rekomendasikan menu makan malam')" class="px-3 py-1 bg-white hover:bg-amber-100 border border-amber-200 text-xs text-amber-800 font-medium rounded-full transition-all flex-shrink-0">
+                💡 Rekomendasi Makan Malam
+            </button>
+            <button onclick="sendQuickPrompt('Tips cara merebus telur setengah matang')" class="px-3 py-1 bg-white hover:bg-amber-100 border border-amber-200 text-xs text-amber-800 font-medium rounded-full transition-all flex-shrink-0">
+                🍳 Tips Rebus Telur
+            </button>
+            <button onclick="sendQuickPrompt('Bagaimana cara membuat bumbu rendang asli?')" class="px-3 py-1 bg-white hover:bg-amber-100 border border-amber-200 text-xs text-amber-800 font-medium rounded-full transition-all flex-shrink-0">
+                🌶️ Bumbu Rendang Asli
+            </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-50/50">
+            <!-- Initial Greeting Message -->
+            <div class="flex items-start gap-2.5 max-w-[85%]">
+                <div class="w-8 h-8 rounded-full bg-amber-500/10 text-base flex items-center justify-center flex-shrink-0">
+                    👨‍🍳
+                </div>
+                <div class="bg-white p-3.5 rounded-2xl rounded-tl-none shadow-sm border border-slate-100">
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        Halo! Saya <strong id="chatGreetingName">Chef Deo AI</strong>. Mau masak apa kita hari ini? 🍳
+                    </p>
+                    <p class="text-sm text-slate-700 mt-1 leading-relaxed">
+                        Kamu bisa tanya resep baru, langkah memasak, rekomendasi menu, atau tanya pengganti bahan masakan yang tidak ada di dapurmu!
+                    </p>
+                    <span class="text-[10px] text-slate-400 mt-1 block">Baru saja</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading / Typing Indicator -->
+        <div id="typingIndicator" class="hidden px-4 py-2 flex items-center gap-2 bg-slate-50/30">
+            <div class="flex items-center gap-1.5 bg-white py-2 px-3.5 rounded-2xl border border-slate-100 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 0ms"></span>
+                <span class="w-2 h-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 150ms"></span>
+                <span class="w-2 h-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 300ms"></span>
+            </div>
+            <span class="text-xs text-slate-400 italic" id="chatTypingIndicatorText">Chef Deo sedang berpikir...</span>
+        </div>
+
+        <!-- Input Area -->
+        <form id="chatForm" onsubmit="handleSendMessage(event)" class="p-3 bg-white border-t border-slate-100 flex items-center gap-2">
+            <input type="text" id="chatInput" placeholder="Tanya Chef Deo..." required
+                class="flex-1 px-4 py-2.5 text-sm bg-slate-100 border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all">
+            <button type="submit" class="p-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl shadow-md shadow-amber-500/20 active:scale-95 transition-all">
+                <svg class="w-5 h-5 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+            </button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 mt-auto border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <span class="p-2 bg-amber-500/10 rounded-xl text-amber-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </span>
+                <span class="font-bold text-white font-serif tracking-wide text-lg">RasaNusantara</span>
+            </div>
+            <p class="text-sm">© 2026 RasaNusantara. Dibuat dengan penuh rasa cinta kuliner.</p>
+        </div>
+    </footer>
+
+    <script src="resep_nusantara_chatbot.js"></script>
 </body>
 </html>
