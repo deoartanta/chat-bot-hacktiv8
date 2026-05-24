@@ -301,7 +301,7 @@ function appendChatMessage(sender, text) {
                 👨‍🍳
             </div>
             <div class="bg-white p-3.5 rounded-2xl rounded-tl-none shadow-sm border border-slate-100">
-                <p class="text-sm text-slate-700 leading-relaxed whitespace-pre-line">${text}</p>
+                <p class="text-sm text-slate-700 leading-relaxed whitespace-pre-line">${marked.parse(text)}</p>
                 <span class="text-[10px] text-slate-400 mt-1 block">${timeString}</span>
             </div>
         </div>
@@ -406,7 +406,7 @@ async function getGeminiAIResponse(userMessage) {
         // Save model answer to internal chatHistory to persist context
         chatHistory.push({
             role: "model",
-            parts: [{ text: generatedText }]
+            text: generatedText
         });
         return generatedText;
     } else {
