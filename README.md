@@ -77,7 +77,7 @@ npm run dev
 7. Buka aplikasi di browser:
 
 ```text
-http://localhost:3000/resep_nusantara_chatbot.html
+http://localhost:3000
 ```
 
 ---
